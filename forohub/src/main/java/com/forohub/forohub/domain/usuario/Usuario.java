@@ -24,7 +24,12 @@ public class Usuario {
     private String correoElectronico;
     private String password;
 
-    /*@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Perfil> perfiles;*/
+    @ManyToMany
+    @JoinTable( //Definir tabla de unión (tabla intermedia entre Usuario y Perfil)
+            name = "usuario_perfil",
+            joinColumns = @JoinColumn(name = "usuario_id"), // define la columna en la tabla de unión que hace referencia a la entidad propietaria de la relación (Usuario).
+            inverseJoinColumns = @JoinColumn(name = "perfil_id")
+    )
+    private List<Perfil> perfiles;
 
 }
