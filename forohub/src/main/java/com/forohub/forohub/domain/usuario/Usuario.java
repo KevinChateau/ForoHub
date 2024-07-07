@@ -2,6 +2,8 @@ package com.forohub.forohub.domain.usuario;
 
 
 import com.forohub.forohub.domain.perfil.Perfil;
+import com.forohub.forohub.domain.respuesta.Respuesta;
+import com.forohub.forohub.domain.topico.Topico;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,5 +33,11 @@ public class Usuario {
             inverseJoinColumns = @JoinColumn(name = "perfil_id")
     )
     private List<Perfil> perfiles;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Respuesta> respuestas;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Topico> topicos;
 
 }
