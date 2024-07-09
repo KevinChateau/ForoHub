@@ -12,4 +12,14 @@ public enum Categoria {
     Categoria(String categoriaSpanish) {
         this.categoriaSpanish = categoriaSpanish;
     }
+
+    public static Categoria getCategoriaSpanish(String text) {
+        for (Categoria categoria : Categoria.values()) {
+            if (categoria.categoriaSpanish.equalsIgnoreCase(text)) {
+                return categoria;
+            }
+        }
+        throw new IllegalArgumentException("Ninguna categoría encontrada para " + text);
+    }
+
 }

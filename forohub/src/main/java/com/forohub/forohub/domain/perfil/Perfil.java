@@ -1,7 +1,7 @@
 package com.forohub.forohub.domain.perfil;
 
 
-import com.forohub.forohub.domain.usuario.Usuario;
+import com.forohub.forohub.domain.curso.DatosRegistroCurso;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

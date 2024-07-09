@@ -28,4 +28,8 @@ public class Curso {
     @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Topico> topicos;
 
+    public Curso(DatosRegistroCurso datosRegistroCurso) {
+        this.nombre = datosRegistroCurso.nombre();
+        this.categoria = Categoria.getCategoriaSpanish(datosRegistroCurso.categoria().toString().toLowerCase());
+    }
 }
