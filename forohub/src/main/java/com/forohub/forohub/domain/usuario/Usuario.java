@@ -40,4 +40,22 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Topico> topicos;
 
+    public Usuario(DatosRegistroUsuario datosRegistroUsuario) {
+        this.nombre = datosRegistroUsuario.nombre();
+        this.email = datosRegistroUsuario.email();
+        this.password = datosRegistroUsuario.password();
+    }
+
+    public void setPerfiles(List<Perfil> perfiles) {
+        this.perfiles = perfiles;
+    }
+
+    public void actualizarDatos(DatosActualizarUsuario datosActualizarUsuario) {
+        if (datosActualizarUsuario.nombre() != null) {
+            this.nombre = datosActualizarUsuario.nombre();
+        }
+        if (datosActualizarUsuario.password() != null) {
+            this.password = datosActualizarUsuario.password();
+        }
+    }
 }
