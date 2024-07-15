@@ -24,7 +24,7 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @PostMapping
-    public ResponseEntity<DatosRespuestaCreacionUsuario> registrarTopico(@RequestBody @Valid DatosRegistroUsuario datosRegistroUsuario,
+    public ResponseEntity<DatosRespuestaCreacionUsuario> registrarUsuario(@RequestBody @Valid DatosRegistroUsuario datosRegistroUsuario,
                                                                          UriComponentsBuilder uriComponentsBuilder) {
 //        System.out.println("El request llega correctamente");
 

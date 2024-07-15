@@ -16,7 +16,7 @@ public class DuplicidadPerfiles implements ValidadorCursos {
     private CursoRepository cursoRepository;
 
     public void validar(DatosRegistroCurso datosRegistroCurso) {
-        Optional<CursoProjection> curso = cursoRepository.findByNombre(datosRegistroCurso.nombre().toUpperCase());
+        Optional<CursoProjection> curso = cursoRepository.findByNombreNative(datosRegistroCurso.nombre().toUpperCase());
         if (curso.isPresent()) {
             throw new ValidationException("Nombre ya existente en la base de datos");
         }

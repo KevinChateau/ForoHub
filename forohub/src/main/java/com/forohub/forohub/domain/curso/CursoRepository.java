@@ -8,5 +8,7 @@ import java.util.Optional;
 public interface CursoRepository extends JpaRepository<Curso,Long> {
 
     @Query("SELECT c.id, c.nombre, c.categoria FROM Curso c WHERE c.nombre =:nombre")
-    Optional<CursoProjection> findByNombre(String nombre);
+    Optional<CursoProjection> findByNombreNative(String nombre);
+
+    Optional<Curso> findByNombreIgnoreCase(String cursoName);
 }

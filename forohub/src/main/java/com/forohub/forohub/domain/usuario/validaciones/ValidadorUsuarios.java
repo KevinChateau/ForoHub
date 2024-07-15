@@ -4,6 +4,6 @@ import com.forohub.forohub.domain.usuario.DatosRegistroUsuario;
 
 public interface ValidadorUsuarios {
 
-    public void validar(DatosRegistroUsuario datosRegistroUsuario);
+    void validar(DatosRegistroUsuario datosRegistroUsuario);
 
 }

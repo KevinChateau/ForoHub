@@ -10,4 +10,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario,Long> {
 
     @Query("SELECT u.id, u.nombre, u.email, u.password FROM Usuario u WHERE email=:email")
     Optional<UsuarioProjection> findByEmail(String email);
+
+    Optional<Usuario> findByNombreIgnoreCase(String autor);
 }
