@@ -16,10 +16,15 @@ public interface UsuarioRepository extends JpaRepository<Usuario,Long> {
 
     Optional<Usuario> findByNombreIgnoreCase(String autor);
 
-    @Query("SELECT new com.forohub.forohub.domain.usuario.UsuarioDTO(u.id, u.nombre, u.email, u.password) FROM Usuario u")
-    List<UsuarioDTO> findAllUsers();
+    /*@Query("SELECT new com.forohub.forohub.domain.usuario.UsuarioDTO(u.id, u.nombre, u.email, u.password) FROM Usuario u")
+    List<UsuarioDTO> findAllUsers();*/
 
 //    Usuario findByEmail(String email);
 
-    UserDetails findByEmail(String username);
+//    UserDetails findByEmail(String email);
+
+    Usuario findByEmail(String email);
+
+    @Query("SELECT u.id, u.nombre, u.email, u.password FROM Usuario u WHERE email=:email")
+    UserDetails findByEmail2Projection(String email);
 }

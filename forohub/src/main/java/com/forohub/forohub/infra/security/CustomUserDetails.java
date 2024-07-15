@@ -17,7 +17,7 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority(usuario.getPerfiles().get(0).getNombre()));
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")); //usuario.getPerfil().name()
     }
 
     @Override
@@ -50,4 +50,7 @@ public class CustomUserDetails implements UserDetails {
         return true;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
 }

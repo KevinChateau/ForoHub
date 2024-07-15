@@ -4,22 +4,11 @@ import jakarta.validation.constraints.*;
 
 public class LogUsuario {
     @NotBlank
-    private String nombre;
-
-    @NotBlank
     @Email
     private String email;
 
     @NotBlank
     private String password;
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     public String getEmail() {
         return email;
