@@ -19,7 +19,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario,Long> {
     @Query("SELECT new com.forohub.forohub.domain.usuario.UsuarioDTO(u.id, u.nombre, u.email, u.password) FROM Usuario u")
     List<UsuarioDTO> findAllUsers();
 
-//    Usuario findByEmail(String email);
+    Usuario findByEmail(String email);
 
-    UserDetails findByEmail(String username);
+//    UserDetails findByEmail(String username);
 }

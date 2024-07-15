@@ -25,11 +25,14 @@ public class AutentificacionController {
 
     @PostMapping
     public ResponseEntity autentificadorLogin(@RequestBody @Valid LogUsuario logUsuario) {
+        System.out.println("logUsuario = " + logUsuario);
+        System.out.println(logUsuario.getEmail() + " - " + logUsuario.getPassword());
         try {
             ConnectionBuilder datosRegistroUsuario;
             Authentication authtoken = new UsernamePasswordAuthenticationToken(logUsuario.getEmail(), logUsuario.getPassword());
             System.out.println(logUsuario +" - " + authtoken);
             Authentication usuarioAutenticado = authenticationManager.authenticate(authtoken);
+            System.out.println("usuarioAutenticado = " + usuarioAutenticado);
             return ResponseEntity.ok(usuarioAutenticado);
         } catch (AuthenticationException e) {
             return ResponseEntity.status(401).body("Credenciales inválidas");
