@@ -32,4 +32,16 @@ public class Respuesta {
     @JoinColumn(name = "topico_id")
     private Topico topico;
 
+    public Respuesta(DatosRegistroRespuesta datosRegistroRespuesta) {
+        this.mensaje = datosRegistroRespuesta.mensaje();
+        this.fechaCreacion = LocalDateTime.now();
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setTopico(Topico topico) {
+        this.topico = topico;
+    }
 }

@@ -19,4 +19,6 @@ public interface TopicoRepository extends JpaRepository<Topico, Long> {
     @Transactional
     @Query("DELETE FROM Topico t WHERE t.id = :id")
     void deleteById(@Param("id") Long id);
+
+    Optional<Topico> findByTituloIgnoreCase(String topicoName);
 }
