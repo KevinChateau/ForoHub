@@ -1,5 +1,6 @@
 package com.forohub.forohub.domain.respuesta;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.forohub.forohub.domain.curso.Curso;
 import com.forohub.forohub.domain.topico.Topico;
 import com.forohub.forohub.domain.usuario.Usuario;
@@ -28,6 +29,7 @@ public class Respuesta {
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "topico_id")
     private Topico topico;

@@ -44,6 +44,7 @@ public class UsuarioController {
 
     @GetMapping
     public ResponseEntity<List<Usuario>> listadoUsuarios() {
+//        var usuarios = usuarioRepository.findAll();
         var usuarios = usuarioRepository.findAll();
         return ResponseEntity.ok(usuarios);
     }

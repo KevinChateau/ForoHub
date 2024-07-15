@@ -16,7 +16,7 @@ public class DuplicidadCorreo implements ValidadorUsuarios{
     private UsuarioRepository usuarioRepository;
 
     public void validar(DatosRegistroUsuario datosRegistroUsuario) {
-        Optional<UsuarioProjection> usuario = usuarioRepository.findByEmail(datosRegistroUsuario.email());
+        Optional<UsuarioProjection> usuario = usuarioRepository.findByEmailProjection(datosRegistroUsuario.email());
         if (usuario.isPresent()) {
             throw new ValidationException("Correo electrónica ya existente en la base de datos");
         }

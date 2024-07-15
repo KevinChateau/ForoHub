@@ -1,6 +1,7 @@
 package com.forohub.forohub.domain.usuario;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.forohub.forohub.domain.perfil.Perfil;
 import com.forohub.forohub.domain.respuesta.Respuesta;
 import com.forohub.forohub.domain.topico.Topico;
@@ -34,9 +35,11 @@ public class Usuario {
     )
     private List<Perfil> perfiles;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Respuesta> respuestas;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Topico> topicos;
 
@@ -57,5 +60,18 @@ public class Usuario {
         if (datosActualizarUsuario.password() != null) {
             this.password = datosActualizarUsuario.password();
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", perfiles=" + perfiles +
+                ", respuestas=" + respuestas +
+                ", topicos=" + topicos +
+                '}';
     }
 }

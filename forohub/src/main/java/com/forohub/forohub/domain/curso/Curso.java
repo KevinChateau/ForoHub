@@ -1,6 +1,7 @@
 package com.forohub.forohub.domain.curso;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.forohub.forohub.domain.topico.Topico;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,11 +26,22 @@ public class Curso {
     @Enumerated(EnumType.STRING)
     private Categoria categoria;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Topico> topicos;
 
     public Curso(DatosRegistroCurso datosRegistroCurso) {
         this.nombre = datosRegistroCurso.nombre();
         this.categoria = Categoria.getCategoriaSpanish(datosRegistroCurso.categoria().toString().toLowerCase());
+    }
+
+    @Override
+    public String toString() {
+        return "Curso{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", categoria=" + categoria +
+                ", topico=" + topicos.stream().map(topico -> topico.getTitulo()) +
+                '}';
     }
 }
